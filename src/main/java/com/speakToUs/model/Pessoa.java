@@ -26,7 +26,6 @@ public class Pessoa implements Serializable {
     @Column
     private Date dtCadastro;
 
-
     public int getId() {
         return id;
     }
