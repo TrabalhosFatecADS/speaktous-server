@@ -19,7 +19,6 @@ public class Pessoa implements Serializable {
     @Column(length = 30)
     private String usuario;
     @Column(length = 150)
-    @JsonIgnore
     private String senha;
     @Column(length = 100)
     private String email;
