@@ -20,10 +20,15 @@ public class PessoaServiceIpl implements PessoaService {
     private PessoaDao pessoaDao;
 
     @Override
-    public void save(Pessoa pessoa) {
-        pessoa.setSenha(GerarSenha.senhaMD5(pessoa.getSenha()));
-        Date dtToday = new Date();
-        pessoa.setDtCadastro(new Date());
-        pessoaDao.save(pessoa);
+    public Pessoa save(Pessoa pessoa) {
+        if (pessoaDao.findPessoaByEmail(pessoa.getEmail()) == null) {
+            pessoa.setSenha(GerarSenha.senhaMD5(pessoa.getSenha()));
+            Date dtToday = new Date();
+            pessoa.setDtCadastro(new Date());
+            pessoaDao.save(pessoa);
+            return pessoa;
+        }else{
+            return null;
+        }
     }
 }

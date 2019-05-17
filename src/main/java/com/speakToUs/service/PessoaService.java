@@ -4,5 +4,5 @@ import com.speakToUs.model.Pessoa;
 
 public interface PessoaService {
 
-    void save(Pessoa pessoa);
+    Pessoa save(Pessoa pessoa);
 }

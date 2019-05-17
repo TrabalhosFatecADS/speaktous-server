@@ -40,8 +40,9 @@ public class AuthenticationController {
     @RequestMapping(value = "/newUser", method = RequestMethod.POST)
     public RetornoPadrao novoUsuario(@RequestBody Pessoa pessoa) throws AuthenticationException{
         try {
-            pessoaService.save(pessoa);
-            return new RetornoPadrao(200, "success");
+            Pessoa pessoaSalva = new Pessoa();
+            pessoaSalva = pessoaService.save(pessoa);
+            return new RetornoPadrao(200, "success",pessoa);
         }catch (Exception ex){
             return null;
         }
@@ -54,10 +55,12 @@ class RetornoPadrao{
 
     private int status;
     private String message;
+    private Pessoa pessoa;
 
-    public RetornoPadrao(int status, String message) {
+    public RetornoPadrao(int status, String message, Pessoa pessoa) {
         this.status = status;
         this.message = message;
+        this.pessoa = pessoa;
     }
 
     public int getStatus() {
@@ -74,5 +77,13 @@ class RetornoPadrao{
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Pessoa getPessoa() {
+        return pessoa;
+    }
+
+    public void setPessoa(Pessoa pessoa) {
+        this.pessoa = pessoa;
     }
 }
