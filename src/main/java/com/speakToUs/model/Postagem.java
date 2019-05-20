@@ -14,6 +14,9 @@ public class Postagem implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id;
 
+    @Column(length = 70)
+    private String titulo;
+
     private Boolean aprovado;
 
     @Column(length = 1024)
@@ -23,6 +26,8 @@ public class Postagem implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true    )
     private List<Comentario> comentarios = new ArrayList<Comentario>();
+
+    private String usuario;
 
     public long getId() {
         return id;
@@ -62,5 +67,21 @@ public class Postagem implements Serializable {
 
     public void setComentarios(List<Comentario> comentarios) {
         this.comentarios = comentarios;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(String usuario) {
+        this.usuario = usuario;
     }
 }
