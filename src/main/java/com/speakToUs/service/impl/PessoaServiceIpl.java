@@ -28,7 +28,6 @@ public class PessoaServiceIpl implements PessoaService {
     @Autowired
     private UserDao userDao;
 
-
     @Override
     public Pessoa save(Pessoa pessoa) {
         if (pessoaDao.findPessoaByEmail(pessoa.getEmail()) == null) {
